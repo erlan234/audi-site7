@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUDI — Модельный ряд и технологии</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Roboto,system-ui,sans-serif}
+body{background:#0b0b0b;color:#eaeaea;line-height:1.6}
+header{background:#000;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid #bb0a1e;position:sticky;top:0;z-index:100}
+.logo-symbol{font-size:2.2rem;font-weight:800;letter-spacing:6px;color:#fff}
+.logo-symbol span{color:#bb0a1e}
+nav a{color:#ccc;text-decoration:none;margin-left:30px;font-weight:500;letter-spacing:1px;font-size:.95rem;text-transform:uppercase;transition:.3s;cursor:pointer}
+nav a:hover{color:#bb0a1e}
+
+.hero{position:relative;padding:110px 40px 90px;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#1a0004 0%,#0b0b0b 60%);border-bottom:1px solid #1a1a1a}
+.hero::before{content:"";position:absolute;top:50%;left:50%;width:900px;height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(187,10,30,.28) 0%,rgba(187,10,30,0) 65%);animation:pulseGlow 4s ease-in-out infinite;pointer-events:none}
+@keyframes pulseGlow{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+.hero::after{content:"AUDI";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:22rem;font-weight:900;letter-spacing:40px;color:rgba(255,255,255,.02);pointer-events:none;white-space:nowrap}
+.hero h1{position:relative;z-index:2;font-size:5rem;font-weight:900;letter-spacing:18px;color:#fff;text-shadow:0 0 40px rgba(187,10,30,.8),0 0 80px rgba(187,10,30,.4);margin-bottom:25px}
+.hero h1 span{color:#bb0a1e;display:inline-block;animation:dotPulse 2s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{text-shadow:0 0 20px #bb0a1e,0 0 40px #bb0a1e}50%{text-shadow:0 0 40px #ff1a35,0 0 80px #ff1a35}}
+.hero p{position:relative;z-index:2;font-size:1.2rem;color:#bbb;max-width:680px;margin:0 auto 40px}
+.hero-buttons{position:relative;z-index:2;display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.hero-btn{display:inline-block;background:#bb0a1e;color:#fff;padding:16px 50px;text-decoration:none;font-weight:700;letter-spacing:3px;text-transform:uppercase;border-radius:4px;font-size:.9rem;transition:.3s;box-shadow:0 0 30px rgba(187,10,30,.5);border:2px solid #bb0a1e}
+.hero-btn:hover{background:#d40e24;transform:translateY(-2px)}
+.hero-btn.ghost{background:transparent;border:2px solid #333;color:#fff}
+.hero-btn.ghost:hover{border-color:#bb0a1e;color:#bb0a1e;background:transparent}
+.hero-stats{position:relative;z-index:2;margin-top:70px;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:820px;margin-left:auto;margin-right:auto}
+.hero-stat .num{font-size:2.4rem;font-weight:900;color:#fff;text-shadow:0 0 25px rgba(187,10,30,.6)}
+.hero-stat .num span{color:#bb0a1e}
+.hero-stat .lbl{font-size:.75rem;color:#888;letter-spacing:3px;text-transform:uppercase;margin-top:6px}
+.ticker{position:absolute;bottom:0;left:0;right:0;background:#050505;border-top:1px solid #1a1a1a;overflow:hidden;height:44px;z-index:3}
+.ticker-track{display:flex;gap:60px;padding:0 30px;white-space:nowrap;animation:tickerMove 30s linear infinite;align-items:center;height:100%}
+.ticker-track span{color:#777;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+.ticker-track span::before{content:"◆";color:#bb0a1e;margin-right:12px;font-size:.7rem}
+@keyframes tickerMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.models,.tech{padding:80px 40px;max-width:1400px;margin:0 auto}
+.tech{max-width:none;background:linear-gradient(180deg,#0b0b0b,#101010);border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a}
+.tech-container{max-width:1400px;margin:0 auto}
+.section-title{text-align:center;font-size:2.5rem;font-weight:700;letter-spacing:6px;margin-bottom:10px;color:#fff}
+.section-title span{color:#bb0a1e}
+.section-sub{text-align:center;color:#777;letter-spacing:3px;text-transform:uppercase;font-size:.9rem;margin-bottom:60px}
+.models-grid,.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px}
+.model-card,.tech-card{background:#111;border-radius:12px;overflow:hidden;border:1px solid #222;transition:.4s;position:relative}
+.model-card:hover,.tech-card:hover{transform:translateY(-8px);border-color:#bb0a1e;box-shadow:0 20px 40px rgba(187,10,30,.25)}
+.card-img{height:220px;position:relative;overflow:hidden;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.model-card:hover .card-img img{transform:scale(1.08)}
+.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.85));pointer-events:none}
+.card-badge{position:absolute;bottom:15px;left:20px;z-index:2;font-size:2.6rem;font-weight:900;letter-spacing:4px;color:#fff}
+.card-badge span{color:#bb0a1e}
+.card-img.no-image .fallback{position:absolute;font-size:6rem;font-weight:900;color:rgba(187,10,30,.15);letter-spacing:10px;z-index:1}
+.card-body{padding:25px}
+.card-body h3{font-size:1.8rem;font-weight:700;letter-spacing:3px;margin-bottom:8px;color:#fff}
+.card-body h3 span{color:#bb0a1e;font-size:1.2rem;margin-left:5px}
+.tagline{color:#888;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:15px}
+.card-body p{color:#999;font-size:.95rem;margin-bottom:20px;line-height:1.7}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.specs span{background:#1c1c1c;padding:5px 12px;border-radius:20px;font-size:.75rem;color:#ccc;border:1px solid #2a2a2a}
+.card-btn{color:#bb0a1e;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.85rem;cursor:pointer;background:none;border:none;padding:0;font-family:inherit;transition:.3s}
+.card-btn:hover{color:#fff}
+.tech-card{padding:40px 30px;cursor:pointer}
+.tech-card::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:#bb0a1e;transform:scaleY(0);transform-origin:top;transition:.4s}
+.tech-card:hover::before{transform:scaleY(1)}
+.tech-icon{font-size:2.5rem;margin-bottom:20px;display:inline-block}
+.tech-card h3{font-size:1.6rem;font-weight:700;letter-spacing:3px;margin-bottom:10px;color:#fff}
+.tech-card h3 span{color:#bb0a1e}
+.tech-tag{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:#bb0a1e;margin-bottom:18px;display:block}
+.tech-card p{color:#999;font-size:.95rem;line-height:1.8}
+.tech-card ul{list-style:none;margin-top:20px}
+.tech-card ul li{color:#bbb;font-size:.9rem;padding-left:22px;position:relative;margin-bottom:10px}
+.tech-card ul li::before{content:"▸";position:absolute;left:0;color:#bb0a1e;font-weight:700}
+.tech-more{margin-top:22px;color:#bb0a1e;font-weight:600;letter-spacing:2px;text-transform:uppercase;font-size:.8rem;display:inline-block;transition:.3s}
+.tech-card:hover .tech-more{letter-spacing:4px;color:#fff}
+.tech-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:25px;margin-top:70px;padding-top:50px;border-top:1px solid #1f1f1f;text-align:center}
+.stat-item h4{font-size:2.6rem;font-weight:800;color:#bb0a1e}
+.stat-item p{color:#888;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-top:5px}
+
+/* ===== МОДАЛКА ===== */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:1000}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal{background:#111;border:1px solid #2a2a2a;border-radius:16px;max-width:750px;width:100%;max-height:90vh;overflow-y:auto;padding:50px 45px 45px;position:relative}
+.modal::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:#bb0a1e;border-radius:16px 16px 0 0}
+.modal-close{position:absolute;top:18px;right:20px;width:38px;height:38px;border-radius:50%;background:#1c1c1c;border:1px solid #2a2a2a;color:#ccc;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit}
+.modal-close:hover{background:#bb0a1e;color:#fff}
+.modal-model-name{font-size:2.2rem;font-weight:800;letter-spacing:6px;color:#fff;text-transform:uppercase;margin-bottom:5px}
+.modal-model-name span{color:#bb0a1e}
+.modal-model-tag{color:#bb0a1e;letter-spacing:4px;text-transform:uppercase;font-size:.8rem;margin-bottom:30px;display:block}
+.modal p{color:#bbb;font-size:1rem;line-height:1.8;margin-bottom:18px}
+.modal h4{color:#fff;font-size:1.05rem;letter-spacing:3px;text-transform:uppercase;margin-top:28px;margin-bottom:14px;padding-left:14px;border-left:3px solid #bb0a1e}
+.modal ul{list-style:none;margin-bottom:20px}
+.modal ul li{color:#bbb;font-size:.95rem;padding-left:24px;position:relative;margin-bottom:10px;line-height:1.7}
+.modal ul li::before{content:"▸";position:absolute;left:0;color:#bb0a1e;font-weight:700}
+.modal-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:25px;padding-top:25px;border-top:1px solid #1f1f1f}
+.modal-fact{background:#161616;border:1px solid #222;border-radius:10px;padding:16px;text-align:center}
+.modal-fact .fact-value{font-size:1.5rem;font-weight:800;color:#bb0a1e}
+.modal-fact .fact-label{font-size:.7rem;color:#888;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+
+/* ===== КОНТАКТЫ В МОДАЛКЕ ===== */
+.contact-block{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.contact-item{background:#161616;border:1px solid #222;border-radius:10px;padding:20px;transition:.3s}
+.contact-item:hover{border-color:#bb0a1e;background:#1a1a1a}
+.contact-item .ci-label{font-size:.7rem;color:#bb0a1e;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;display:block}
+.contact-item .ci-value{font-size:1.15rem;font-weight:700;color:#fff;word-break:break-word}
+.contact-item .ci-value a{color:#fff;text-decoration:none;transition:.3s}
+.contact-item .ci-value a:hover{color:#bb0a1e}
+.contact-item .ci-note{font-size:.8rem;color:#777;margin-top:6px}
+.contact-socials{display:flex;justify-content:center;gap:12px;margin-top:25px;padding-top:25px;border-top:1px solid #1f1f1f;flex-wrap:wrap}
+.contact-socials a{display:inline-flex;align-items:center;justify-content:center;min-width:46px;height:46px;padding:0 18px;border-radius:23px;background:#1a1a1a;border:1px solid #2a2a2a;color:#ccc;text-decoration:none;font-size:.85rem;font-weight:700;letter-spacing:1px;transition:.3s;text-transform:uppercase}
+.contact-socials a:hover{background:#bb0a1e;color:#fff;border-color:#bb0a1e;transform:translateY(-3px)}
+
+footer{background:#050505;padding:60px 40px 30px;border-top:1px solid #1a1a1a;text-align:center}
+.footer-logo{font-size:2rem;font-weight:800;letter-spacing:8px;color:#fff;margin-bottom:20px}
+.footer-logo span{color:#bb0a1e}
+.footer-links{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-bottom:30px}
+.footer-links a{color:#777;text-decoration:none;letter-spacing:1px;font-size:.9rem;text-transform:uppercase;cursor:pointer}
+.footer-links a:hover{color:#bb0a1e}
+.copyright{color:#444;font-size:.8rem}
+
+@media(max-width:768px){
+header{padding:15px 20px;flex-direction:column;gap:15px}
+nav a{margin:0 10px;font-size:.8rem}
+.hero{padding:70px 20px 80px}
+.hero h1{font-size:3rem;letter-spacing:10px}
+.hero::after{font-size:10rem;letter-spacing:15px}
+.hero-stats{grid-template-columns:repeat(2,1fr);gap:25px}
+.hero-stat .num{font-size:1.8rem}
+.models,.tech{padding:50px 20px}
+.models-grid,.tech-grid{grid-template-columns:1fr}
+.modal{padding:45px 25px 30px}
+.modal-model-name{font-size:1.5rem;letter-spacing:3px}
+.contact-block{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><div class="logo-symbol">AUD<span>I</span></div></div>
+    <nav>
+        <a href="#">Главная</a>
+        <a href="#models">Модели</a>
+        <a href="#tech">Технологии</a>
+        <a id="contactsBtn">Контакты</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>AUD<span>I</span></h1>
+    <p>Воплощение инженерной мысли, спортивного характера и немецкого качества. Vorsprung durch Technik.</p>
+    <div class="hero-buttons">
+        <a href="#models" class="hero-btn">Смотреть модели</a>
+        <a href="#tech" class="hero-btn ghost">Технологии</a>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stat"><div class="num">9<span>+</span></div><div class="lbl">Моделей</div></div>
+        <div class="hero-stat"><div class="num">40<span>+</span></div><div class="lbl">Лет quattro</div></div>
+        <div class="hero-stat"><div class="num">620<span>+</span></div><div class="lbl">л.с. в R8</div></div>
+        <div class="hero-stat"><div class="num">#1</div><div class="lbl">В инновациях</div></div>
+    </div>
+    <div class="ticker">
+        <div class="ticker-track">
+            <span>Vorsprung durch Technik</span><span>quattro®</span><span>TFSI®</span>
+            <span>Virtual Cockpit</span><span>Matrix LED</span><span>Audi AI</span><span>e-tron®</span>
+            <span>Vorsprung durch Technik</span><span>quattro®</span><span>TFSI®</span>
+            <span>Virtual Cockpit</span><span>Matrix LED</span><span>Audi AI</span><span>e-tron®</span>
+        </div>
+    </div>
+</section>
+
+<section class="models" id="models">
+    <h2 class="section-title">МОДЕЛЬНЫЙ <span>РЯД</span></h2>
+    <p class="section-sub">Выберите свой Audi</p>
+
+    <div class="models-grid">
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_a5.jpg" alt="A5" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">A5</div><div class="card-badge">A<span>5</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>A5</span></h3>
+                <div class="tagline">Спортивное купе</div>
+                <p>Элегантный дизайн, динамика и передовые технологии.</p>
+                <div class="specs"><span>2.0 TFSI</span><span>249 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="a5">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\Audi_A6.webp" alt="A6" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">A6</div><div class="card-badge">A<span>6</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>A6</span></h3>
+                <div class="tagline">Бизнес-класс</div>
+                <p>Представительский седан с комфортом премиум-класса.</p>
+                <div class="specs"><span>3.0 TFSI</span><span>340 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="a6">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_a7.jpg" alt="A7" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">A7</div><div class="card-badge">A<span>7</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>A7</span></h3>
+                <div class="tagline">Спортбек</div>
+                <p>Роскошный четырёхдверный спортбек.</p>
+                <div class="specs"><span>3.0 TFSI</span><span>340 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="a7">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\Audi_A8.webp" alt="A8" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">A8</div><div class="card-badge">A<span>8</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>A8</span></h3>
+                <div class="tagline">Флагманский седан</div>
+                <p>Вершина модельного ряда. Максимальный комфорт.</p>
+                <div class="specs"><span>4.0 TFSI</span><span>460 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="a8">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_Q5.jpg" alt="Q5" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">Q5</div><div class="card-badge">Q<span>5</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>Q5</span></h3>
+                <div class="tagline">Среднеразмерный SUV</div>
+                <p>Универсальный кроссовер.</p>
+                <div class="specs"><span>2.0 TFSI</span><span>249 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="q5">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_Q7.jpg" alt="Q7" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">Q7</div><div class="card-badge">Q<span>7</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>Q7</span></h3>
+                <div class="tagline">Большой SUV</div>
+                <p>Просторный семиместный внедорожник.</p>
+                <div class="specs"><span>3.0 TFSI</span><span>340 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="q7">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_Q8.jpg" alt="Q8" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">Q8</div><div class="card-badge">Q<span>8</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>Q8</span></h3>
+                <div class="tagline">Купе-кроссовер</div>
+                <p>Спортивный флагманский SUV.</p>
+                <div class="specs"><span>3.0 TFSI</span><span>340 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="q8">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_tt.jpg" alt="TT" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">TT</div><div class="card-badge">T<span>T</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>TT</span></h3>
+                <div class="tagline">Легендарное купе</div>
+                <p>Иконический спортивный автомобиль.</p>
+                <div class="specs"><span>2.0 TFSI</span><span>230 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="tt">Подробнее →</button>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="card-img">
+                <img src="C:\Users\User\Desktop\mystartapp\Audi\audi_r8.jpg" alt="R8" onerror="this.parentElement.classList.add('no-image'); this.remove();">
+                <div class="fallback">R8</div><div class="card-badge">R<span>8</span></div>
+            </div>
+            <div class="card-body">
+                <h3>AUDI <span>R8</span></h3>
+                <div class="tagline">Суперкар</div>
+                <p>Экстремальная производительность.</p>
+                <div class="specs"><span>5.2 V10</span><span>620 л.с.</span><span>quattro</span></div>
+                <button class="card-btn" data-key="r8">Подробнее →</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="tech" id="tech">
+    <div class="tech-container">
+        <h2 class="section-title">ТЕХНОЛОГИИ <span>AUDI</span></h2>
+        <p class="section-sub">Vorsprung durch Technik — нажмите на карточку</p>
+
+        <div class="tech-grid">
+
+            <div class="tech-card" data-key="quattro">
+                <div class="tech-icon">⚙️</div>
+                <h3>quattro <span>®</span></h3>
+                <span class="tech-tag">Полный привод</span>
+                <p>Легендарная система постоянного полного привода Audi.</p>
+                <ul><li>Распределение крутящего момента</li><li>Уверенность на мокрой дороге</li><li>Динамика в поворотах</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+            <div class="tech-card" data-key="tfsi">
+                <div class="tech-icon">🔥</div>
+                <h3>TFSI <span>®</span></h3>
+                <span class="tech-tag">Двигатели</span>
+                <p>Турбонаддув с послойным впрыском топлива.</p>
+                <ul><li>Турбонаддув и прямой впрыск</li><li>Оптимальный расход топлива</li><li>Высокий крутящий момент</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+            <div class="tech-card" data-key="cockpit">
+                <div class="tech-icon">🖥️</div>
+                <h3>Virtual <span>Cockpit</span></h3>
+                <span class="tech-tag">Цифровая панель</span>
+                <p>Полностью цифровая приборная панель.</p>
+                <ul><li>12,3-дюймовый дисплей</li><li>Настраиваемый интерфейс</li><li>Интеграция с MMI</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+            <div class="tech-card" data-key="matrix">
+                <div class="tech-icon">💡</div>
+                <h3>Matrix <span>LED</span></h3>
+                <span class="tech-tag">Головной свет</span>
+                <p>Интеллектуальная система освещения.</p>
+                <ul><li>Автоматический дальний свет</li><li>Адаптация под ситуацию</li><li>Безопасность ночью</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+            <div class="tech-card" data-key="ai">
+                <div class="tech-icon">🤖</div>
+                <h3>Audi <span>AI</span></h3>
+                <span class="tech-tag">Автономное вождение</span>
+                <p>Системы помощи водителю будущего.</p>
+                <ul><li>Адаптивный круиз-контроль</li><li>Удержание в полосе</li><li>Мониторинг слепых зон</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+            <div class="tech-card" data-key="etron">
+                <div class="tech-icon">🔋</div>
+                <h3>e-tron <span>®</span></h3>
+                <span class="tech-tag">Электрификация</span>
+                <p>Семейство электрических и гибридных моделей Audi.</p>
+                <ul><li>Запас хода 500+ км</li><li>Быстрая зарядка</li><li>Рекуперация энергии</li></ul>
+                <span class="tech-more">Узнать больше →</span>
+            </div>
+
+        </div>
+
+        <div class="tech-stats">
+            <div class="stat-item"><h4>40+</h4><p>Лет quattro</p></div>
+            <div class="stat-item"><h4>100%</h4><p>Немецкое качество</p></div>
+            <div class="stat-item"><h4>24/7</h4><p>Поддержка Audi</p></div>
+            <div class="stat-item"><h4>#1</h4><p>В инновациях</p></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-logo">AUD<span>I</span></div>
+    <div class="footer-links">
+        <a href="#">О бренде</a>
+        <a href="#models">Модели</a>
+        <a href="#tech">Технологии</a>
+        <a href="#">Сервис</a>
+        <a id="contactsBtnFooter">Контакты</a>
+    </div>
+    <div class="copyright">© 2026 Audi. Все права защищены.</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<script>
+var carData = {
+a5:{name:'AUDI <span>A5</span>',tag:'Спортивное купе',intro:'Audi A5 — элегантное купе, сочетающее спортивный характер и повседневный комфорт.',history:'Первое поколение A5 (2007) создано на платформе MLB. Второе поколение (2016) получило цифровую приборную панель.',facts:['Дизайн A5 разработан под руководством Вальтера де Сильвы','Купе A5 разделяет платформу с Audi A4 и Q5','RS5 — 2.9-литровый битурбо V6 на 450 л.с.','Модель получила 5 звёзд Euro NCAP'],stats:[{v:'249',l:'л.с.'},{v:'5.8с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'7.3л',l:'на 100 км'}]},
+a6:{name:'AUDI <span>A6</span>',tag:'Бизнес-класс',intro:'Audi A6 — флагманский бизнес-седан премиум-класса.',history:'История A6 началась в 1994 году. Пятое поколение (C8, 2018) — мягкогибрид и quattro.',facts:['Audi 100 (1982) имел Cx 0.30','A6 Avant — популярный универсал','RS6 Avant — 600 л.с.','A6 allroad quattro'],stats:[{v:'340',l:'л.с.'},{v:'5.1с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'8.0л',l:'на 100 км'}]},
+a7:{name:'AUDI <span>A7</span>',tag:'Спортбек',intro:'Audi A7 Sportback — четырёхдверное купе с уникальным силуэтом.',history:'Первое поколение (2010) — первопроходец жанра. Второе (2018) — цифровой кокпит и матричные фары.',facts:['Безрамочные двери','RS7 — 600 л.с. и 800 Нм','Багажник 535 литров','Активный задний спойлер'],stats:[{v:'340',l:'л.с.'},{v:'5.3с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'8.2л',l:'на 100 км'}]},
+a8:{name:'AUDI <span>A8</span>',tag:'Флагманский седан',intro:'Audi A8 — флагман, воплощение роскоши и технологий Audi.',history:'Первое поколение (1994) — первый серийный авто с алюминиевым кузовом. D5 (2017) — Audi AI.',facts:['Audi Space Frame снижает вес на 40%','A8 L — удлинённая база','Массаж и вентиляция всех сидений','Версия Horch — 4 места'],stats:[{v:'460',l:'л.с.'},{v:'4.5с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'9.0л',l:'на 100 км'}]},
+q5:{name:'AUDI <span>Q5</span>',tag:'Среднеразмерный SUV',intro:'Audi Q5 — самый популярный кроссовер Audi.',history:'Первое поколение (2008). Второе (2017) — MLB evo, quattro ultra и мягкогибрид.',facts:['Самый продаваемый SUV Audi','SQ5 — 3.0 TFSI на 354 л.с.','Багажник 550 литров','Пневмоподвеска опционально'],stats:[{v:'249',l:'л.с.'},{v:'6.1с',l:'0–100 км/ч'},{v:'237',l:'км/ч'},{v:'7.5л',l:'на 100 км'}]},
+q7:{name:'AUDI <span>Q7</span>',tag:'Большой SUV',intro:'Audi Q7 — просторный семиместный внедорожник премиум-класса.',history:'Первое поколение (2005). Второе (2015) — легче на 325 кг.',facts:['Буксировка до 3.5 тонн','SQ7 — 4.0 V8 TDI','Пневмоподвеска','Третий ряд складывается электрически'],stats:[{v:'340',l:'л.с.'},{v:'5.9с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'8.9л',l:'на 100 км'}]},
+q8:{name:'AUDI <span>Q8</span>',tag:'Купе-кроссовер',intro:'Audi Q8 — спортивный флагманский SUV.',history:'Дебютировал в 2018. Платформа MLB evo, общая с Lamborghini Urus.',facts:['Безрамочные двери','RS Q8 — 600 л.с.','Рекорд Нюрбургринга среди SUV','Виртуальный кокпит + два сенсорных MMI'],stats:[{v:'340',l:'л.с.'},{v:'5.6с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'9.2л',l:'на 100 км'}]},
+tt:{name:'AUDI <span>TT</span>',tag:'Легендарное купе',intro:'Audi TT — иконический спортивный автомобиль.',history:'Первое поколение (1998) произвело фурор. Третье (2014) — виртуальный кокпит.',facts:['Дизайн вдохновлён Auto Union Type C','TT RS — 2.5 турбо I5 на 400 л.с.','Разгон TT RS — 3.7 с','Снят с производства в 2023'],stats:[{v:'230',l:'л.с.'},{v:'5.9с',l:'0–100 км/ч'},{v:'250',l:'км/ч'},{v:'7.1л',l:'на 100 км'}]},
+r8:{name:'AUDI <span>R8</span>',tag:'Суперкар',intro:'Audi R8 — экстремальный среднемоторный суперкар.',history:'R8 дебютировал в 2006 году. Второе поколение (2015) — 5.2 V10 и платформа Lamborghini Huracán.',facts:['R8 выигрывал Ле-Ман 5 раз','V10 Performance — 0–100 за 3.1 с','Максимальная скорость — 331 км/ч','Снят с производства в 2024'],stats:[{v:'620',l:'л.с.'},{v:'3.1с',l:'0–100 км/ч'},{v:'331',l:'км/ч'},{v:'13.4л',l:'на 100 км'}]},
+quattro:{name:'quattro <span>®</span>',tag:'Полный привод',intro:'quattro — легендарная система постоянного полного привода Audi, дебютировавшая в 1980 году.',history:'Впервые появилась на Audi Quattro в 1980. С тех пор стала символом марки и основой побед в ралли и Ле-Мане.',facts:['Дебют — Женева 1980','Победы в WRC: 23 титула','Изначально — постоянный привод с блокировками','Сейчас — quattro ultra с отключением задней оси'],stats:[{v:'1980',l:'Год дебюта'},{v:'40+',l:'Лет истории'},{v:'23',l:'Титула WRC'},{v:'100%',l:'Символ Audi'}]},
+tfsi:{name:'TFSI <span>®</span>',tag:'Двигатели',intro:'TFSI — технология турбонаддува с послойным впрыском топлива, сочетающая мощность и экономичность.',history:'Впервые применена в 2004 году. Сочетает турбонаддув и прямой впрыск, обеспечивая высокий КПД.',facts:['Турбонаддув + прямой впрыск','Экономия до 15% топлива','Высокий крутящий момент с низких оборотов','Используется во всех современных Audi'],stats:[{v:'2004',l:'Год дебюта'},{v:'+15%',l:'Экономия'},{v:'2.0–4.0',l:'Объём, л'},{v:'до 630',l:'л.с.'}]},
+cockpit:{name:'Virtual <span>Cockpit</span>',tag:'Цифровая панель',intro:'Virtual Cockpit — полностью цифровая приборная панель Audi с настраиваемым интерфейсом.',history:'Дебютировала в 2014 году на Audi TT. Полностью заменяет аналоговые приборы на 12,3-дюймовый экран.',facts:['12,3-дюймовый дисплей','Разрешение 1440×540 пикселей','Режимы Classic и Infotainment','Интеграция с Google Earth и MMI'],stats:[{v:'2014',l:'Год дебюта'},{v:'12,3"',l:'Диагональ'},{v:'1440p',l:'Разрешение'},{v:'2',l:'Режима'}]},
+matrix:{name:'Matrix <span>LED</span>',tag:'Головной свет',intro:'Matrix LED — интеллектуальная система освещения, адаптирующая пучок света под дорожную ситуацию.',history:'Дебютировала в 2013 году на Audi A8. Каждая фара содержит до 25 светодиодов, управляемых по отдельности.',facts:['До 25 светодиодов в фаре','Автоматическое переключение дальнего света','Не ослепляет других водителей','Интеграция с навигацией'],stats:[{v:'2013',l:'Год дебюта'},{v:'25',l:'Светодиодов'},{v:'до 600м',l:'Дальность'},{v:'100%',l:'Автоматика'}]},
+ai:{name:'Audi <span>AI</span>',tag:'Автономное вождение',intro:'Audi AI — комплекс систем помощи водителю и технологии автономного вождения.',history:'Представлен в 2017 году на Audi A8. A8 стал первым серийным авто с уровнем автономности Level 3.',facts:['Первый Level 3 в серии','Адаптивный круиз-контроль','Удержание в полосе','Автопарковка без водителя'],stats:[{v:'2017',l:'Год дебюта'},{v:'Level 3',l:'Автономность'},{v:'24/7',l:'Мониторинг'},{v:'#1',l:'В индустрии'}]},
+etron:{name:'e-tron <span>®</span>',tag:'Электрификация',intro:'e-tron — семейство электрических и гибридных моделей Audi.',history:'Первая серийная модель — Audi e-tron SUV (2018). К 2026 году Audi выпускает более 20 электрических моделей.',facts:['Запас хода 500+ км','Быстрая зарядка 150 кВт','Рекуперация при торможении','Полный привод quattro'],stats:[{v:'2018',l:'Год дебюта'},{v:'500+',l:'км запаса'},{v:'150',l:'кВт зарядка'},{v:'20+',l:'Моделей'}]}
+};
+
+// Данные контактов
+var contactsData = {
+name:'КОНТАКТЫ <span>AUDI</span>',
+tag:'Свяжитесь с нами',
+intro:'Мы всегда рады помочь вам с выбором, вопросами по сервису или тест-драйву. Выберите удобный способ связи — мы ответим в течение 15 минут.',
+phone1:'+7 (800) 200-33-33',
+phone2:'+7 (495) 123-45-67',
+email1:'info@audi.ru',
+email2:'service@audi.ru'
+};
+
+window.onload = function() {
+    var overlay = document.getElementById('modalOverlay');
+    var content = document.getElementById('modalContent');
+    var closeBtn = document.getElementById('modalClose');
+
+    // Кнопки "Подробнее"
+    var carButtons = document.querySelectorAll('.card-btn');
+    for (var i = 0; i < carButtons.length; i++) {
+        carButtons[i].onclick = function(e) {
+            e.stopPropagation();
+            openModal(this.getAttribute('data-key'));
+        };
+    }
+
+    // Карточки технологий
+    var techCards = document.querySelectorAll('.tech-card');
+    for (var j = 0; j < techCards.length; j++) {
+        techCards[j].onclick = function() {
+            openModal(this.getAttribute('data-key'));
+        };
+    }
+
+    // Кнопки "Контакты" в шапке и футере
+    document.getElementById('contactsBtn').onclick = openContacts;
+    document.getElementById('contactsBtnFooter').onclick = openContacts;
+
+    function openModal(key) {
+        var data = carData[key];
+        if (!data) { alert('Информация не найдена'); return; }
+
+        var html = '';
+        html += '<div class="modal-model-name">' + data.name + '</div>';
+        html += '<span class="modal-model-tag">' + data.tag + '</span>';
+        html += '<p>' + data.intro + '</p>';
+        html += '<h4>История</h4>';
+        html += '<p>' + data.history + '</p>';
+        html += '<h4>Интересные факты</h4><ul>';
+        for (var k = 0; k < data.facts.length; k++) {
+            html += '<li>' + data.facts[k] + '</li>';
+        }
+        html += '</ul>';
+        html += '<h4>Характеристики</h4>';
+        html += '<div class="modal-facts">';
+        for (var m = 0; m < data.stats.length; m++) {
+            html += '<div class="modal-fact">';
+            html += '<div class="fact-value">' + data.stats[m].v + '</div>';
+            html += '<div class="fact-label">' + data.stats[m].l + '</div>';
+            html += '</div>';
+        }
+        html += '</div>';
+
+        content.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    function openContacts() {
+        var html = '';
+        html += '<div class="modal-model-name">' + contactsData.name + '</div>';
+        html += '<span class="modal-model-tag">' + contactsData.tag + '</span>';
+        html += '<p>' + contactsData.intro + '</p>';
+
+        html += '<h4>Телефон</h4>';
+        html += '<div class="contact-block">';
+        html += '<div class="contact-item">';
+        html += '<span class="ci-label">Горячая линия</span>';
+        html += '<div class="ci-value"><a href="tel:+78002003333">' + contactsData.phone1 + '</a></div>';
+        html += '<div class="ci-note">Круглосуточно, бесплатно по РФ</div>';
+        html += '</div>';
+        html += '<div class="contact-item">';
+        html += '<span class="ci-label">Дилерский центр</span>';
+        html += '<div class="ci-value"><a href="tel:+74951234567">' + contactsData.phone2 + '</a></div>';
+        html += '<div class="ci-note">Москва, пн–вс 9:00–21:00</div>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<h4>Электронная почта</h4>';
+        html += '<div class="contact-block">';
+        html += '<div class="contact-item">';
+        html += '<span class="ci-label">Общие вопросы</span>';
+        html += '<div class="ci-value"><a href="mailto:' + contactsData.email1 + '">' + contactsData.email1 + '</a></div>';
+        html += '<div class="ci-note">Ответ в течение 15 минут</div>';
+        html += '</div>';
+        html += '<div class="contact-item">';
+        html += '<span class="ci-label">Сервис и запчасти</span>';
+        html += '<div class="ci-value"><a href="mailto:' + contactsData.email2 + '">' + contactsData.email2 + '</a></div>';
+        html += '<div class="ci-note">Поддержка 24/7</div>';
+        html += '</div>';
+        html += '</div>';
+
+        html += '<div class="contact-socials">';
+        html += '<a href="tel:+78002003333">Позвонить</a>';
+        html += '<a href="mailto:' + contactsData.email1 + '">Написать</a>';
+        html += '<a href="#">Telegram</a>';
+        html += '<a href="#">WhatsApp</a>';
+        html += '</div>';
+
+        content.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    closeBtn.onclick = function() {
+        overlay.classList.remove('active');
+    };
+
+    overlay.onclick = function(e) {
+        if (e.target === overlay) {
+            overlay.classList.remove('active');
+        }
+    };
+
+    document.onkeydown = function(e) {
+        if (e.key === 'Escape') {
+            overlay.classList.remove('active');
+        }
+    };
+};
+</script>
+
+</body>
+</html>
